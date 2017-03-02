@@ -10,9 +10,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.niit.myGreatSale.model.Category;
 @Configuration
 @ComponentScan("com.niit.shopingcart")
 @EnableTransactionManagement
@@ -23,12 +25,12 @@ public class ApplicationContextConfig {
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/niit");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/niitdb");
 
 		dataSource.setDriverClassName("org.h2.Driver");
 
-		dataSource.setUsername("sa");
-		dataSource.setPassword("sa");
+		dataSource.setUsername("hitesh");
+		dataSource.setPassword("hitesh");
 		
 		
 		return dataSource;
@@ -49,7 +51,7 @@ public class ApplicationContextConfig {
 
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
-		
+		sessionBuilder.addAnnotatedClass(Category.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 

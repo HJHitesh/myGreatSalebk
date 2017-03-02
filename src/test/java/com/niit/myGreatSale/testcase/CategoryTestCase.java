@@ -10,6 +10,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.niit.myGreatSale.dao.CategoryDAO;
 import com.niit.myGreatSale.model.Category;
 
+import junit.framework.Assert;
+
 public class CategoryTestCase {
 
 	@Autowired
@@ -34,16 +36,30 @@ public class CategoryTestCase {
 	//TEST Cases to notify it we give @test annotation that test case are here
 	
 	@Test
-	public void createCategoryTestCase()
-	{
-		category.setId("CG01032017");
-		category.setName("Mobile category");
-		category.setDescription("This is mobile category");
+//	public void createCategoryTestCase()
+//	{
+//		category.setId("CG01032017");
+//		category.setName("Mobile category");
+//		category.setDescription("This is mobile category");
+//		
+//		boolean flag = categoryDAO.save(category);
+//		
+//		//compare what you are expecting Vs what we are getting from save method 
+//	}
+	
+	public void updateCategoryTestCase(){
 		
-		boolean flag = categoryDAO.save(category);
+		category.setId("CG03032017");
+		category.setName("new Category");
+		category.setDescription("This is Women category");
 		
-		//compare what you are expecting Vs what we are getting from save method 
+		boolean flag = categoryDAO.update(category);
+		//Assert.assertEquals("updateCategoryTestCase", true ,flag);
 	}
 	
+//	public void deleteTestCase(){
+//		
+//		categoryDAO.delete("CG02032017");
+//	}
 
 }
