@@ -90,7 +90,11 @@ public class CategoryDAOImpl  implements CategoryDAO{
 			
 		}
 	}
-
+/**
+ * this method will return Category Base on Category Id.
+ * If the category ex
+ * 
+ */
 	public Category getCategoryByID(String id) {
 		//select * from Category where id ='mobile'
 	//  return	(Category)  sessionFactory.getCurrentSession().get(Category.class, id);
@@ -101,7 +105,7 @@ public class CategoryDAOImpl  implements CategoryDAO{
 
 	public Category getCategoryByName(String name) {
 		  
-		  return  (Category) sessionFactory.getCurrentSession().createQuery("from Category where name = '"+name + "'").list().get(0);
+		  return  (Category) sessionFactory.getCurrentSession().createQuery("from Category where name = '"+name + "'").uniqueResult();
 			
 
 	}

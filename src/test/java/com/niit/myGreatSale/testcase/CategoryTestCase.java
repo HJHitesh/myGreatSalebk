@@ -16,50 +16,91 @@ public class CategoryTestCase {
 
 	@Autowired
 	private static Category category;
-	
+
 	@Autowired
 	private static CategoryDAO categoryDAO;
-	
-	
+
 	@BeforeClass
-	public  static void init() {
-		
-		AnnotationConfigApplicationContext context =new AnnotationConfigApplicationContext();
+	public static void init() {
+
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.niit");
 		context.refresh();
-		
+
 		category = (Category) context.getBean("category");
-		
+
 		categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
-		
-								}
-	//TEST Cases to notify it we give @test annotation that test case are here
-	
-	@Test
-//	public void createCategoryTestCase()
-//	{
-//		category.setId("CG01032017");
-//		category.setName("Mobile category");
-//		category.setDescription("This is mobile category");
-//		
-//		boolean flag = categoryDAO.save(category);
-//		
-//		//compare what you are expecting Vs what we are getting from save method 
-//	}
-	
-	public void updateCategoryTestCase(){
-		
-		category.setId("CG03032017");
-		category.setName("new Category");
-		category.setDescription("This is Women category");
-		
-		boolean flag = categoryDAO.update(category);
-		//Assert.assertEquals("updateCategoryTestCase", true ,flag);
+
 	}
-	
-//	public void deleteTestCase(){
-//		
-//		categoryDAO.delete("CG02032017");
-//	}
+	// TEST Cases to notify it we give @test annotation that test case are here
+
+	// To Create the Table
+	@Test
+	public void createCategoryTestCase() {
+		category.setId("CG05032017");
+		category.setName(" Bat Category");
+		category.setDescription("This is Bat category");
+
+		boolean flag = categoryDAO.save(category);
+
+		assertEquals("createCategoryTestCase", true, flag);
+		// compare what you are expecting Vs what we are getting from save
+		// method
+	}
+
+	// Update the Table
+	@Test
+	public void updateCategoryTestCase() {
+
+		category.setId("CG01032017");
+		category.setName("new MObile Category");
+		category.setDescription("THis is mobile category");
+
+		boolean flag = categoryDAO.update(category);
+		assertEquals("updateCategoryTestCase", true, flag);
+	}
+
+	@Test
+	public void deleteTestCase() {
+
+		boolean flag = categoryDAO.delete("CG02032017");
+		assertEquals("deleteTestCase", true, flag);
+	}
+
+	@Test
+	public void deleteByCategoryTestCase() {
+
+		category.setId("CG04032017");
+
+		boolean flag = categoryDAO.delete(category);
+
+		assertEquals("deleteByCategoryTestCase", true, flag);
+
+	}
+
+	@Test
+	public void getCategoryByIDTestCase() {
+
+		category = categoryDAO.getCategoryByID("CG01032017d");
+		assertEquals("getCategoryByIDTestCase", null, category);
+	}
+
+	@Test
+	public void getCategoryByNameTestCase() {
+
+		category = categoryDAO.getCategoryByName("Mobiled category");
+
+		assertEquals("getCategoryByNameTestCase", null, category);
+	}
+
+	@Test // It tell the Junit to run this
+	public void getallCategoryTestCase() {
+
+		int size = categoryDAO.list().size();// It check the value of category
+												// how many inserted and give
+												// the value is stored in size.
+
+		assertEquals("getallCategoryValuesTestCase", 3, size);
+	}
 
 }
