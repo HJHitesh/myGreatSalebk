@@ -2,18 +2,25 @@ package com.niit.myGreatSale.dao;
 
 import java.util.List;
 
+import com.niit.myGreatSale.model.Category;
 import com.niit.myGreatSale.model.Supplier;
 
 public interface SupplierDAO {
 
 	public List<Supplier> list();
 
-	public Supplier getSupplierByID(String id);
-
 	public boolean save(Supplier supplier);
 
 	public boolean update(Supplier supplier);
+	
+	//delete supplier by id
+	public boolean delete(String id);
+	
+	public boolean delete(Supplier supplier);
+	
+	public Supplier getSupplierByID(String id);
 
-	public boolean deleteById(String id);
+
+	public Supplier getSupplierByName(String name);
 
 }

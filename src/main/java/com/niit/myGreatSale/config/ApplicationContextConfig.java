@@ -20,7 +20,7 @@ import com.niit.myGreatSale.model.Product;
 import com.niit.myGreatSale.model.Supplier;
 import com.niit.myGreatSale.model.User;
 @Configuration
-@ComponentScan("com.niit.shopingcart")
+@ComponentScan("com.niit.myGreatSalebk")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 

@@ -81,7 +81,8 @@ public class CategoryTestCase {
 	@Test
 	public void getCategoryByIDTestCase() {
 
-		category = categoryDAO.getCategoryByID("CG01032017d");
+		category = categoryDAO.getCategoryByID("CG01032017");
+		
 		assertEquals("getCategoryByIDTestCase", null, category);
 	}
 

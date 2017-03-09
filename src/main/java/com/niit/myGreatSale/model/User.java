@@ -1,5 +1,6 @@
 package com.niit.myGreatSale.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,6 +15,7 @@ public class User {
 	@Id
 	private String id;
 	
+	@Column(name="name")
 	private String name;
 	
 	private String password;

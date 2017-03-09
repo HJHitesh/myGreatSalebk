@@ -2,6 +2,7 @@ package com.niit.myGreatSale.testcase;
 
 import static org.junit.Assert.assertEquals;
 
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,61 +30,92 @@ public class SupplierTestCase {
 		supplier = (Supplier) context.getBean("supplier");
 
 		supplierDAO = (SupplierDAO) context.getBean("supplierDAO");
+		
 	}
+	
+//	@Test
+//		public void deleteByIdTestCase(){
+//			
+//			boolean flag = supplierDAO.delete("SP01032017");
+//			
+//			assertEquals("getProductByIdTestcase",true,flag);
+//			
+//			
+//		}
+//	
+//	
+//	@Test
+//	public void deleteBySupplierTestCase() {
+//
+//		supplier.setId("CG02032017");
+//
+//		boolean flag = supplierDAO.delete(supplier);
+//
+//		assertEquals("deleteBySupplierTestCase", true, flag);
+//
+//	}
+//
 
 	@Test
 	public void createSupplierTestCase() {
-		supplier.setId("SP04032017");
-		supplier.setName("baggiwaka");
-		supplier.setAddress("Virarjjjj");
+		
+		supplier.setId("SP09032017");
+		supplier.setName("bassdggiwaka");
+		supplier.setAddress("Visddsrarjjjj");
 
 		boolean flag = supplierDAO.save(supplier);
 
 		assertEquals("createSupplierTestCase", true, flag);
-		// compare what you are expecting Vs what we are getting from save
-		// method
+		
 	}
 
 	@Test
 	public void updateSupplierTestCase() {
-
-		supplier.setId("SP04032017");
-		supplier.setName("baggi pvt ltd");
-		supplier.setAddress("baggi nagar");
-
+		
+		supplier.setId("SP09032017");
+		supplier.setName("hitesh33333");
+		supplier.setAddress("virar Bolinaj");
+		
 		boolean flag = supplierDAO.update(supplier);
-		assertEquals("updateSupplierTestCase", true, flag);
-	}
-
-	@Test
-	public void getSupplierByIdTestcase() {
-
-		supplier = supplierDAO.getSupplierByID("SP04032017");
-
-		assertEquals("getSupplierByIdTestcase", null, supplier);
-
-	}
-	
-	@Test
-	public void deleteByIdTestCase(){
 		
-		supplier = supplierDAO.getSupplierByID("SP04032017");
-		
-		assertEquals("getProductByIdTestcase",null,supplier);
+		assertEquals("updateSupplierTestCase",true, flag);
 		
 	}
-	
-	
-
-	@Test // It tell the Junit to run this
-	public void getallSupplierTestCase() {
-
-		int size = supplierDAO.list().size();
-
-		assertEquals("getallSupplierTestCase", 3, size);
-	}
-
-	
-	
-	
+//	
+//	
+//
+//	
+//	//@Test
+//	public void getSupplierByIdTestcase() {
+//
+//		supplier = supplierDAO.getSupplierByID("SP01032017d");
+//		
+//		assertEquals("getSupplierByIdTestcase", null, supplier);
+//		
+//		
+//		
+//	}
+//	
+//	@Test
+//	public void getSupplierByNameTestCase() {
+//
+//		supplier = supplierDAO.getSupplierByName("hiteshsas");
+//		
+//		assertEquals("getSupplierByNameTestCase", null, supplier);
+//		
+//		
+//		
+//	}
+//	//@Test 
+//	public void getallSupplierTestCase() {
+//
+//		int size = supplierDAO.list().size();
+//		
+//		assertEquals("getallSupplierTestCase", 6, size);
+//		
+//	}
+//
+//	
+//	
+//	
 }

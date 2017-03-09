@@ -15,13 +15,16 @@ import com.niit.myGreatSale.model.User;
 
 @Transactional
 @Repository("userDAO")
-
 public class UserDAOImpl implements UserDAO {
 	
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public UserDAOImpl(SessionFactory sessionFactory)
+	{
+		this.sessionFactory = sessionFactory;
+	}
 	
 	private Session getSession(){
 		
