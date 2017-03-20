@@ -23,7 +23,7 @@ public class UserTestCase {
 	private static UserDAO userDAO;
 
 	@BeforeClass
-	public static void initializer() {
+	public static void init() {
 
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.niit");
@@ -54,7 +54,7 @@ public class UserTestCase {
 	@Test
 	public void validateCreationTestCase() {
 
-		boolean flag = userDAO.validate("priti123", "proriti");
+		boolean flag = userDAO.validate("priti", "priti456");
 		assertEquals("validateCreationTestCase", true, flag);
 
 	}
@@ -79,7 +79,9 @@ public class UserTestCase {
 	@Test
 	public  void createUserTestCase(){
 		
-		user.setId("priti1234");
+		user = new User();//BECAUSE IT IS GIVING NULL POINTER EXCEPTION.
+		
+		user.setId("priti02020");
 		user.setName("priti456");
 		user.setPassword("pritit456");
 		user.setMail("priti8@gmail.com");

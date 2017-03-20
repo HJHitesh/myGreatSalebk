@@ -4,7 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -16,12 +19,18 @@ public class User {
 	private String id;
 	
 	@Column(name="name")
+	@NotEmpty(message="User name should not be empty")
 	private String name;
 	
+
+	@Min(5) 
+	@Max(10)
 	private String password;
 	
+	@Column(unique=true ,nullable=false)
 	private String mail;
 	 
+	@NotEmpty(message="User contact should not be empty")
 	private String contact;
 	
 	private String role;

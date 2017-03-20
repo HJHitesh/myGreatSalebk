@@ -37,9 +37,9 @@ public class CategoryTestCase {
 	// To Create the Table
 	@Test
 	public void createCategoryTestCase() {
-		category.setId("CG05032017");
-		category.setName(" Bat Category");
-		category.setDescription("This is Bat category");
+		category.setId("CG32017");
+		category.setName(" Bat  th mobileCategory");
+		category.setDescription("This is Mobile category");
 
 		boolean flag = categoryDAO.save(category);
 
@@ -52,7 +52,7 @@ public class CategoryTestCase {
 	@Test
 	public void updateCategoryTestCase() {
 
-		category.setId("CG01032017");
+		category.setId("CG03032017");
 		category.setName("new MObile Category");
 		category.setDescription("THis is mobile category");
 
@@ -81,8 +81,7 @@ public class CategoryTestCase {
 	@Test
 	public void getCategoryByIDTestCase() {
 
-		category = categoryDAO.getCategoryByID("CG01032017");
-		
+		category = categoryDAO.getCategoryByID("CG01032017d");
 		assertEquals("getCategoryByIDTestCase", null, category);
 	}
 

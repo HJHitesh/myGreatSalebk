@@ -6,6 +6,7 @@ import com.niit.myGreatSale.model.User;
 
 public interface UserDAO {
 
+
 	public List<User> list();
 	
 	public User getUser(String id);

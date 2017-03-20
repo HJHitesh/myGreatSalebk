@@ -1,10 +1,17 @@
 package com.niit.myGreatSale.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -18,10 +25,28 @@ public class Category {
 	@Id
 	private String id;
 	
-	@Column(name="name")  //if the field name and property name is different
+	@Column(name="name") //if the field name and property name is different
+	@Min(5) //Min and maximum value
+	@Max(15) 
 	private String name;
 	
+	
+	@NotEmpty
 	private String description;
+
+	@OneToMany(mappedBy="category" , fetch = FetchType.EAGER)
+	private  Set<Product> products;
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
+	
+	
 
 	public String getId() {
 		return id;

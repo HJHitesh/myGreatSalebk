@@ -3,7 +3,11 @@ package com.niit.myGreatSale.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.springframework.stereotype.Component;
 
@@ -16,15 +20,28 @@ public class Product {
 	private String id;
 
 	@Column(name="name")
+	@Min(5) //Min and maximum value
+	@Max(15)
 	private String name;
-
+	
+	@Min(2) //Min and maximum value
+	@Max(10)
 	private double price;
 	
 	private String Description;
+	
 
 	private String category_id;
 
 	private String supplier_id;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id",updatable=false,insertable =false, nullable=false)
+	private Category category;
+	
+	@ManyToOne
+	@JoinColumn(name="supplier_id",updatable=false,insertable =false, nullable=false)
+	private Supplier supplier;
 
 	public String getId() {
 		return id;

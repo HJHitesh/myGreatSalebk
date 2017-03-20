@@ -1,10 +1,17 @@
 package com.niit.myGreatSale.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -19,10 +26,24 @@ public class Supplier {
 	private String id;
 	
 	@Column(name="name")
+	@Min(5) //Min and maximum value
+	@Max(15)
 	private String name;
 	
-	@Column (name="address")
+	
 	private String address;
+	
+	@OneToMany(mappedBy="supplier" , fetch = FetchType.EAGER)
+	private  Set<Product> products;
+	
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
 
 	public String getId() {
 		return id;
