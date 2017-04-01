@@ -5,11 +5,14 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
@@ -25,9 +28,8 @@ public class Category {
 	@Id
 	private String id;
 	
-	@Column(name="name") //if the field name and property name is different
-	@Min(5) //Min and maximum value
-	@Max(15) 
+	@Column(name="name")
+	@Size(min=2 , max=15 , message = "Plzs take the name between {min} to {max} ")    //if the field name and property name 
 	private String name;
 	
 	

@@ -10,6 +10,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="Product") // if the class name and table name is different
@@ -20,21 +21,20 @@ public class Product {
 	private String id;
 
 	@Column(name="name")
-	@Min(5) //Min and maximum value
-	@Max(15)
 	private String name;
 	
-	@Min(2) //Min and maximum value
-	@Max(10)
 	private double price;
 	
 	private String Description;
+	
+	
 	
 
 	private String category_id;
 
 	private String supplier_id;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id",updatable=false,insertable =false, nullable=false)
 	private Category category;
@@ -42,7 +42,38 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name="supplier_id",updatable=false,insertable =false, nullable=false)
 	private Supplier supplier;
+	
+	
+	@javax.persistence.Transient
+	MultipartFile file;
+	public MultipartFile getFile()
+	{
+		return file;
+	}
+	
+	public void setFile(MultipartFile file)
+	{
+		this.file = file;
+	}
+	
+	 public Category getCategory() {
+			return category;
+		}
 
+		public void setCategory(Category category) {
+			this.category = category;
+		}
+
+		public Supplier getSupplier() {
+			return supplier;
+		}
+
+		public void setSupplier(Supplier supplier) {
+			this.supplier = supplier;
+		}
+
+   
+   
 	public String getId() {
 		return id;
 	}

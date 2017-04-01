@@ -37,7 +37,7 @@ public class CategoryTestCase {
 	// To Create the Table
 	@Test
 	public void createCategoryTestCase() {
-		category.setId("CG32017");
+		category.setId("");
 		category.setName(" Bat  th mobileCategory");
 		category.setDescription("This is Mobile category");
 

@@ -29,7 +29,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
 	public List<Supplier> list() {
 		
-		return sessionFactory.getCurrentSession().createQuery("from User").list();
+		return sessionFactory.getCurrentSession().createQuery("from Supplier").list();
 	}
 
 	public boolean save(Supplier supplier) {
