@@ -28,7 +28,8 @@ public class Product {
 	private String Description;
 	
 	
-	
+	@javax.persistence.Transient
+	private MultipartFile file;
 
 	private String category_id;
 
@@ -42,36 +43,15 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name="supplier_id",updatable=false,insertable =false, nullable=false)
 	private Supplier supplier;
+		
 	
-	
-	@javax.persistence.Transient
-	MultipartFile file;
-	public MultipartFile getFile()
-	{
+	 public MultipartFile getFile() {
 		return file;
 	}
-	
-	public void setFile(MultipartFile file)
-	{
+
+	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
-	
-	 public Category getCategory() {
-			return category;
-		}
-
-		public void setCategory(Category category) {
-			this.category = category;
-		}
-
-		public Supplier getSupplier() {
-			return supplier;
-		}
-
-		public void setSupplier(Supplier supplier) {
-			this.supplier = supplier;
-		}
-
    
    
 	public String getId() {
