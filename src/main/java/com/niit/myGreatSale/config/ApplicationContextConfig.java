@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.myGreatSale.model.Category;
+import com.niit.myGreatSale.model.MyCart;
 import com.niit.myGreatSale.model.Product;
 import com.niit.myGreatSale.model.Supplier;
 import com.niit.myGreatSale.model.User;
@@ -47,6 +48,7 @@ public class ApplicationContextConfig {
 		
 		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.format_sql", "true");
 		return properties;
 	}
 
@@ -60,6 +62,7 @@ public class ApplicationContextConfig {
 		sessionBuilder.addAnnotatedClass(Product.class);
 		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
+		sessionBuilder.addAnnotatedClass(MyCart.class);
 		
 		return sessionBuilder.buildSessionFactory();
 	}

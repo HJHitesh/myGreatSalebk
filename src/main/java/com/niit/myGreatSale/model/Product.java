@@ -6,8 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +25,6 @@ public class Product {
 	private double price;
 	
 	private String Description;
-	
 	
 	@javax.persistence.Transient
 	private MultipartFile file;
